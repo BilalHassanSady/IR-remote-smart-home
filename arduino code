@@ -1,0 +1,44 @@
+#include <IRremote.h>
+
+IRrecv rec(7);
+
+decode_results res;
+
+int relay1 = relaypin1 ;
+int relay2 = relaypin2 ;
+int relay2 = relaypin3 ;
+int relay2 = relaypin4 ;
+
+
+void setup(){
+  rec.enableIRIn();
+  Serial.begin(9600);
+  pinMode(12,OUTPUT);
+}
+void loop(){
+  if(rec.decode(&res)){
+   
+    if(res.value == 0xzzzzzz)//reblace z with your remote code 
+    {
+     digitalWrite(relay1,LOW); //turn off the firist device
+     digitalWrite(relay2,LOW);
+    }
+    if(res.value == 0xzzzzzz)
+    {
+     digitalWrite(relay1,HIGH); //turn on the firist device
+     digitalWrite(relay2,HIGH);
+    }
+        if(res.value == 0xzzzzzz)//reblace z with your remote code 
+    {
+     digitalWrite(relay3,LOW); //turn off the second device
+     digitalWrite(relay4,LOW);
+    }
+    if(res.value == 0xzzzzzz)
+    {
+     digitalWrite(relay3,HIGH); //turn on the second device
+     digitalWrite(relay4,HIGH);
+    }
+  rec.resume();
+  }
+  
+}
