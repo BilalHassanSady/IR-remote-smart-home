@@ -11,6 +11,11 @@ int relay2 = relaypin4 ;
 
 
 void setup(){
+  pinMode(relay1,OUTPUT);
+  pinMode(relay2,OUTPUT);
+  pinMode(relay3,OUTPUT);
+  pinMode(relay4,OUTPUT);
+  
   rec.enableIRIn();
   Serial.begin(9600);
   pinMode(12,OUTPUT);
